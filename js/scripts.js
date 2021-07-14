@@ -6,12 +6,14 @@ var interval = setInterval(function() {
 }, 100);
 
 function getVaccineCentersList() {
-    const Url = "https://baroque-chaise-38790.herokuapp.com/https://vaccine.covid19.gov.lk/cz-portal-backend-service/api/v1/vsession/list"
+    // const Url = "https://baroque-chaise-38790.herokuapp.com/https://vaccine.covid19.gov.lk/cz-portal-backend-service/api/v1/vsession/list"
+    const Url = "https://baroque-chaise-38790.herokuapp.com/https://google.com/"
 
     fetch(Url)
     .then(response => {
-        if (response.ok) return response.json()
-        throw new Error('Network response was not ok.')
+        console.log(response);
+        // if (response.ok) return response.json()
+        // throw new Error('Network response was not ok.')
     })
-    .then(data => console.log(data.contents));
+    // .then(data => console.log(data.contents));
 }
