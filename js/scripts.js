@@ -1,12 +1,7 @@
-if(document.readyState === 'complete') {
-    getVaccineCentersList();
-}
-
 var interval = setInterval(function() {
     if(document.readyState === 'complete') {
-        getVaccineCentersList();
         clearInterval(interval);
-        done();
+        getVaccineCentersList();
     }    
 }, 100);
 
