@@ -1,1 +1,1 @@
-# Vaccine-Search
+# Vaccine Search
