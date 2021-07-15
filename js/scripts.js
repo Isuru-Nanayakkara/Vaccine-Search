@@ -14,13 +14,14 @@ function getVaccineCentersList() {
     .then(data => { 
         for(const obj of data) {
             let row = document.createElement('tr');
-            row.appendChild(document.createElement('td')).textContent = obj.date;
-            row.appendChild(document.createElement('td')).textContent = obj.dose;
+            row.appendChild(document.createElement('td')).textContent = new Date(obj.date).toDateString();
             row.appendChild(document.createElement('td')).textContent = obj.ageGroup;
-            row.appendChild(document.createElement('td')).textContent = obj.vaccineType;
             row.appendChild(document.createElement('td')).textContent = obj.mohCenter;
-
-            const table = document.getElementsByClassName('table')[0];
+            row.appendChild(document.createElement('td')).textContent = obj.centerName;
+            row.appendChild(document.createElement('td')).textContent = obj.dose;
+            row.appendChild(document.createElement('td')).textContent = obj.vaccineType;
+            
+            const table = document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0];
             table.appendChild(row);
         }
      })
