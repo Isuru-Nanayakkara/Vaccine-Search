@@ -14,6 +14,7 @@ function getVaccineCentersList() {
     .then(data => { 
         for(const obj of data) {
             let row = document.createElement('tr');
+            row.setAttribute('class', 'list-item');
             row.appendChild(document.createElement('td')).textContent = new Date(obj.date).toDateString();
             row.appendChild(document.createElement('td')).textContent = obj.ageGroup;
             row.appendChild(document.createElement('td')).textContent = obj.mohCenter;
@@ -27,3 +28,25 @@ function getVaccineCentersList() {
      })
     .catch(error => console.log(error))
 }
+
+$(document).on("long-press", ".list-item" , function(e) {
+    e.preventDefault();
+    
+    let row = $(e.target).closest('tr').html();
+
+    let date = $(row)[0].textContent;
+    let area = $(row)[2].textContent;
+    let center = $(row)[3].textContent;
+    let dose = $(row)[4].textContent;
+    let vaccine = $(row)[5].textContent;
+
+    let message = `Get the ${dose} of ${vaccine} at ${center}, ${area} on ${date}`
+
+	if(navigator.share) {
+        navigator.share({
+            title: 'COVID-19 Vaccination Program',
+            text: message,
+            url: 'https://isuru-nanayakkara.github.io/Vaccine-Search/'
+        });
+    }
+});
