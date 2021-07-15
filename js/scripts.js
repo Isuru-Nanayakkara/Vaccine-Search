@@ -41,6 +41,7 @@ $(document).on("long-press", ".list-item" , function(e) {
     let vaccine = $(row)[5].textContent;
 
     let message = `Get the ${dose} of ${vaccine} at ${center}, ${area} on ${date}`
+    console.log(message);
 
 	if(navigator.share) {
         navigator.share({
